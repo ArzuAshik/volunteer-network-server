@@ -28,13 +28,13 @@ client.connect((err) => {
   const volunteerCollection = client
     .db("volunteerNetworkDB")
     .collection("volunteerCollection");
-  console.log("dbConnected");
+  console.log("dbConnected", err);
 
   //   register volunteer
   app.post("/registerEvent", (req, res) => {
     const data = req.body;
     volunteerCollection.insertOne(data).then((result) => {
-      res.send("Register Event Successfully");
+      res.send({ name: "Register Event Successfully" });
     });
   });
 
